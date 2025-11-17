@@ -66,7 +66,7 @@ console.log('-------------')
 // Pseudocode:
 // start
 // create function isZigzag() that accepts array
-// 
+// s
 
 console.log(isZigzag([1, 3, 2, 4, 3])); // true
 console.log(isZigzag([5, 2, 8, 1, 9])); // false

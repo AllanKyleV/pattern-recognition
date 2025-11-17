@@ -332,3 +332,60 @@ function isPalindromeArray(arr) {
 console.log(isPalindromeArray([1, 2, 3, 2, 1])) // true
 console.log(isPalindromeArray([7, 8, 8, 7, 5])); // false
 console.log(isPalindromeArray([])); // true
+console.log('-------------');
+
+// Exercise 4: Geometric sequence (Growth / Decay)
+// A geometric sequence is when every number is multiplied by the same ratio to get the next one.
+
+// Examples
+// [2, 6, 18, 54] → ratio = 3
+// [40, 20, 10, 5] → ratio = 0.5
+// [1, 1, 1, 1] → ratio = 1
+
+// Logic: Get the ratio of index 1 and 2
+// Compare if ration of next and curr item is equal to diff
+
+// Pseudocode:
+// start
+// create function isGeometric() that accepts arr
+// if array length < 2 return true
+// If first value is zero, and every other elements are 0 return true
+// set ratio to arr[1] / arr[0]
+// for i from 0 to length of array - 1 - 1
+//      set curr to arr[i]
+//      set next to arr[i + 1]
+//      if curr == 0 return false
+//      if (next / curr) !== ratio then
+//          return false
+//      endif
+// endfor
+// return true
+// end
+
+function isGeometric(arr) {
+    if (arr.length < 2) return true;
+
+    const ratio = arr[0] === 0 ? 0 : arr[1] / arr[0];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        const curr = arr[i];
+        const next = arr[i + 1];
+
+        // if curr = 0 but ratio ≠ 0 → impossible
+        if (curr === 0 && ratio !== 0) return false;
+
+        // if curr ≠ 0, the ratio must match
+        if (curr !== 0 && next !== curr * ratio) return false;
+    }
+
+    return true;
+}
+
+console.log(isGeometric([2, 6, 18, 54])); // true
+console.log(isGeometric([10, 5, 2.5, 1.25])); // true
+console.log(isGeometric([1, 1, 1, 1])); // true
+console.log(isGeometric([3, 9, 27, 81, 82])); // false
+console.log(isGeometric([0, 5, 25])); // false
+console.log(isGeometric([])); // true
+console.log(isGeometric([5])); // true
+console.log(isGeometric([0, 0, 0])); // true
